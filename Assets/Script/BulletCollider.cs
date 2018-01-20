@@ -5,13 +5,11 @@ using UnityEngine;
 public class BulletCollider : MonoBehaviour {
 
     [SerializeField] float MissTime;
-    private CapsuleCollider collideR;
+    [SerializeField] CapsuleCollider collideR;
     private float timeR;
 
 	// Use this for initialization
-	void Start () {
-        collideR = GetComponent<CapsuleCollider>();
-	}
+
 	
 	// Update is called once per frame
 	void Update () {

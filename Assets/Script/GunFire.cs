@@ -6,7 +6,6 @@ public class GunFire : MonoBehaviour {
 
     [SerializeField] GameObject Shoot;
     [SerializeField] GameObject Bullet;
-    [SerializeField] AudioSource Audio;
     [SerializeField] GunEffect guneffect;
     [SerializeField] float ShootForce = 10000;
     [SerializeField] float FireRange = 100;
@@ -18,7 +17,6 @@ public class GunFire : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Audio = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -69,10 +67,7 @@ public class GunFire : MonoBehaviour {
             clonE.GetComponent<Rigidbody>().AddForce(tShoot.forward * ShootForce);
         }
 
-        if (Audio != null)
-        {
-            Audio.Play();
-        }
+        guneffect.GunShoot();
     }
 
 

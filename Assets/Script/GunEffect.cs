@@ -5,16 +5,20 @@ using UnityEngine;
 public class GunEffect : MonoBehaviour {
 
     [SerializeField] Transform RayPoint;
+    [SerializeField] AudioSource Audio;
+    [SerializeField] ParticleSystem Muzzle;
 
     private LineRenderer linE;
 
 	// Use this for initialization
 	void Start () {
         linE = GetComponent<LineRenderer>();
-	}
-	
-	// Update is called once per frame
-	void SpawnDecal (RaycastHit hit, GameObject prefab) {
+        Audio = GetComponent<AudioSource>();
+
+    }
+
+    // Update is called once per frame
+    void SpawnDecal (RaycastHit hit, GameObject prefab) {
 
         GameObject spawnedDecal = GameObject.Instantiate(prefab, hit.point, Quaternion.LookRotation(hit.normal));
 
@@ -28,6 +32,16 @@ public class GunEffect : MonoBehaviour {
         {
             linE.SetPosition(0, RayPoint.position);
             linE.SetPosition(1, RayPoint.position + RayPoint.forward * distance);
+        }
+    }
+
+    public void GunShoot()
+    {
+        Muzzle.Play();
+
+        if (Audio != null)
+        {
+            Audio.Play();
         }
     }
 }
